@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
 });

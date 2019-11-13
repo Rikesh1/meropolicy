@@ -15,15 +15,15 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  @include('front.layouts.header')
-  @include('front.layouts.sidebar')
+  @include('Backend.layouts.header')
+  @include('Backend.layouts.sidebar')
   
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     @yield('content')
   </div>
-  @include('front.layouts.footer')
+  @include('Backend.layouts.footer')
 
     <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
