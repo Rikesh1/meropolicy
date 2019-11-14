@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class DashboardController extends BackendController
 {
-
-    public function index(Request $request)
+	public function __construct()
+	{
+		$this->middleware('auth:admin');
+	}
+	
+    public function index()
     {
-        if ($request->isMethod('get')) {
-            return view($this->backendPath . 'dashboard');
-        }
-        return false;
+        return view($this->backendPath . 'dashboard');
     }
 }

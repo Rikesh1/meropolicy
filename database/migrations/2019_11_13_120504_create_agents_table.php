@@ -15,12 +15,30 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable();
+            $table->enum('commission_type', ['fixed', 'percentage'])->nullable();
+            $table->float('commission_rate', 10, 2)->nullable();
             $table->string('password');
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->string('address')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('country')->nullable();
+            $table->string('dob')->nullable();
+            $table->enum('gender', ['Male', 'Female'])->nullable();
+            $table->string('avatar')->nullable();
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
+            $table->string('ip_address')->nullable();
+            $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
