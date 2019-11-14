@@ -1,4 +1,14 @@
-@import '~bootstrap/dist/css/bootstrap.css';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~admin-lte/bower_components/bootstrap/dist/css/bootstrap.css';
+
+// Admin Lte
 @import '~admin-lte/bower_components/font-awesome/css/font-awesome.min.css';
+@import '~admin-lte/bower_components/Ionicons/css/ionicons.min.css';
 @import '~admin-lte/dist/css/adminlte.css';
 @import '~admin-lte/dist/css/skins/_all-skins.css';
