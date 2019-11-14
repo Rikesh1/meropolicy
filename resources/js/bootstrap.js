@@ -10,8 +10,11 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    require('admin-lte/bower_components/bootstrap/dist/js/bootstrap');
     require('admin-lte');
+    require('myckeditor/myscripts.js');
+
+
 } catch (e) {
 }
 

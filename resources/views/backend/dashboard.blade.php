@@ -1,7 +1,8 @@
 @extends('backend.layouts.app')
 @section('title', 'Dashboard')
 @section('content')
-    <!-- Content Header (Page header) -->
+
+  <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         {{__('backend.dashboard')}}

@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Dashboard
+            {{__('backend.dashboard')}}
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
@@ -92,32 +92,66 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form id="insurance_type_save" method="post" action="{{route('update-types')}}" class="form-group">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-sidebar-subheading">
+                                        {{__('backend.insurance_type')}}
+                                        <input name="insurance_type_name" type="text"
+                                               class="form-control">
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select name="status" class="form-control select2" style="width: 100%;">
+                                        <option value="1" selected="selected">Published</option>
+                                        <option value="0" selected="selected">Not Published</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-sidebar-subheading">
+                                        Page Title
+                                        <input name="page_title" type="text" class="form-control">
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label class="control-sidebar-subheading">
+                                        Slug
+                                        <input type="text" name="slug" class="form-control">
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
-                                Insurance Type Name
-                                <input type="text" class="form-control">
+                                Insurance Type Image
+                                <input name="image" type="file" class="form-control">
                             </label>
 
                         </div>
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
-                                Insurance Type Name
-                                <input type="text" class="form-control">
-                            </label>
-
-                        </div>
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select class="form-control select2" style="width: 100%;">
-                                <option value="1" selected="selected">Published</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Insurance Type Name
-                                <input type="file" class="form-control">
+                                Insurance Type Icon
+                                <input name="icon" type="file" class="form-control">
                             </label>
 
                         </div>
@@ -125,27 +159,61 @@
                             <label class="control-sidebar-subheading">
                                 Insurance Type Description
                             </label>
-                            <textarea id="type_description"></textarea>
-
-
+                            <textarea name="description" id="type_description"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Meta Keywords
+                            </label>
+                            <textarea name="keywords" rows="2" cols="90" id=""></textarea>
+                            <small>Seperated by commas</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Meta Description
+                            </label>
+                            <textarea name="meta_description" rows="2" cols="90" id=""></textarea>
+                        </div>
+
 
                         <!-- /.form-group -->
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button id="save" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 
 @endsection
-
 @push('extra_scripts')
     <script>
         $(document).ready(function () {
+            $('#save').click(function (e) {
+                e.preventDefault();
+
+                let myForm = document.getElementById('insurance_type_save');
+                let formData = new FormData(myForm);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('update-types')}}",
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    data: formData,
+                    success: function (response) {
+console.log(response);
+                    }
+                });
+            });
         });
     </script>
 @endpush

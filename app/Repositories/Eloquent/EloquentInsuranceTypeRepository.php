@@ -5,6 +5,8 @@ namespace App\Repositories\Eloquent;
 use App\InsuranceType;
 use App\Repositories\Contracts\InsuranceTypeRepository;
 
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 use Kurt\Repoist\Repositories\Eloquent\AbstractRepository;
 
 class EloquentInsuranceTypeRepository extends AbstractRepository implements InsuranceTypeRepository
@@ -18,6 +20,20 @@ class EloquentInsuranceTypeRepository extends AbstractRepository implements Insu
     {
         $all = $this->entity()::all();
         return $all;
+
+    }
+
+    public function update_insurance_type($request)
+    {
+        if ($request->ajax()) {
+            $validator = Validator::make($request->all(), [
+                'insurance_type_name' => 'required|min:2|max:100'
+            ]);
+            if ($validator->fails()) {
+                return Response::json(['errors' => $validator->errors()->all()]);
+            }
+            dd('ok');
+        }
 
     }
 }
