@@ -207,10 +207,10 @@
                     url: "{{route('update-types')}}",
                     contentType: false,
                     cache: false,
-                    processData:false,
+                    processData: false,
                     data: formData,
                     success: function (response) {
-console.log(response);
+                        console.log(response);
                     }
                 });
             });
