@@ -9691,7 +9691,7 @@ jQuery.event = {
 				}
 			}
 
-			// Add to the element's handler list, delegates in Backend
+			// Add to the element's handler list, delegates in backend
 			if ( selector ) {
 				handlers.splice( handlers.delegateCount++, 0, handleObj );
 			} else {

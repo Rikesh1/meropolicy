@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\InsuranceTypeRepository;
+use App\Repositories\Eloquent\EloquentInsuranceTypeRepository;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(InsuranceTypeRepository::class, EloquentInsuranceTypeRepository::class);
     }
 
     /**
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength('191');
     }
 }
