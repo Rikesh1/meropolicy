@@ -37,7 +37,7 @@ Route::post('/register/agent', 'Auth\RegisterController@agentRegister');
 /** Admin Routes */
 Route::redirect('/admin', '/admin/dashboard');
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 

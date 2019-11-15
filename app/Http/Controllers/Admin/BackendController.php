@@ -7,5 +7,5 @@ use Illuminate\Http\Request;
 
 class BackendController extends Controller
 {
-    protected $backendPath = 'Backend.';
+    protected $backendPath = 'admin.';
 }
