@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Language Route
+Route::get('/lang/{lang}', ['Middleware' => 'LanguageSwitcher', 'uses' => 'LanguageController@change'])->name('langChange');
 
 Auth::routes();
 
@@ -37,8 +39,9 @@ Route::post('/register/agent', 'Auth\RegisterController@agentRegister');
 /** Admin Routes */
 Route::redirect('/admin', '/admin/dashboard');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::any('/update-types', 'InsuranceTypeController@update_types')->name('insurance.update-types');
 });
 
 /** Merchant Routes */
