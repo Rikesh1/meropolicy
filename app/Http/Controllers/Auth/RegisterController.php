@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Model\Admin;
+use App\Model\Agent;
+use App\Model\Merchant;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,6 +42,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:merchant');
+        $this->middleware('guest:agent');
     }
 
     /**
@@ -49,7 +56,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,9 +73,78 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
+            'phone' => $request->phone,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function showAdminRegisterForm()
+    {
+        return view('auth.admin_register');
+    }
+
+    protected function adminRegister(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        Admin::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        return redirect()->intended('/login/admin');
+    }
+
+    public function showMerchantRegisterForm()
+    {
+        return view('auth.merchant_register');
+    }
+
+    protected function merchantRegister(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        Merchant::create([
+            'company_name' => $request->company_name,
+            'company_slug' => $request->company_slug,
+            'company_phone' => $request->company_phone,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        return redirect()->intended('/login/merchant');
+    }
+
+    public function showAgentRegisterForm()
+    {
+        return view('auth.agent_register');
+    }
+
+    protected function agentRegister(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        Agent::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        return redirect()->intended('/login/agent');
     }
 }

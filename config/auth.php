@@ -46,6 +46,21 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
+        ],
+
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
     ],
 
     /*
@@ -68,7 +83,22 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Model\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\Admin::class,
+        ],
+
+        'merchants' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\Merchant::class,
+        ],
+
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\Agent::class,
         ],
 
         // 'users' => [

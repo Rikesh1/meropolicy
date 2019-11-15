@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class BackendController extends Controller
 {
-    protected $backendPath = 'Backend.';
-    protected $backendPagePath = '';
-
-
+    protected $adminPath = 'admin.';
 }
