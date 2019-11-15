@@ -13,6 +13,7 @@ try {
     require('admin-lte/bower_components/bootstrap/dist/js/bootstrap');
     require('admin-lte');
 
+    
 
 
 } catch (e) {
