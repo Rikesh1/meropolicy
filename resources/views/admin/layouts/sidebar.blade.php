@@ -41,7 +41,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{route('update-types')}}"><i class="fa fa-circle-o"></i>Insurance Types</a></li>
+            <li class="active"><a href="{{route('admin.insurance.update-types')}}"><i class="fa fa-circle-o"></i>Insurance Types</a></li>
           </ul>
         </li>
         <li class="treeview">

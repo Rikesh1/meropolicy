@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('admin.layouts.app')
 @section('title', 'Dashboard')
 @section('content')
     <!-- Content Header (Page header) -->
@@ -92,7 +92,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="insurance_type_save" method="post" action="{{route('update-types')}}" class="form-group">
+                    <form id="insurance_type_save" method="post" action="{{route('admin.insurance.update-types')}}" class="form-group">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -204,7 +204,7 @@
                 });
                 $.ajax({
                     type: "POST",
-                    url: "{{route('update-types')}}",
+                    url: "{{route('admin.insurance.update-types')}}",
                     contentType: false,
                     cache: false,
                     processData: false,

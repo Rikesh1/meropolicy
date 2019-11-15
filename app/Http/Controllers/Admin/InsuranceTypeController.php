@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\backend\InsuranceType;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\backend\BackendController;
+use App\Http\Controllers\BackendController;
 use App\Http\Controllers\Controller;
-use App\Models\InsuranceType;
+use App\Model\InsuranceType;
 use App\Repositories\Contracts\InsuranceTypeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -16,7 +16,6 @@ class InsuranceTypeController extends BackendController
 
     public function __construct(InsuranceTypeRepository $insurance)
     {
-        parent::__construct();
         $this->insurance = $insurance;
     }
 
@@ -24,7 +23,7 @@ class InsuranceTypeController extends BackendController
     {
         if ($request->isMethod('get')) {
             $insurance_types = $this->insurance->all_insurance();
-            return view($this->insuranceTypePath . 'update_insurance', compact('insurance_types', compact('insurance_types')));
+            return view($this->adminPath . 'update_insurance', compact('insurance_types', compact('insurance_types')));
         }
         if ($request->isMethod('post')) {
 

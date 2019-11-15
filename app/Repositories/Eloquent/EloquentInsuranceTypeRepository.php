@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\InsuranceType;
+use App\Model\InsuranceType;
 use App\Repositories\Contracts\InsuranceTypeRepository;
 
 use Illuminate\Support\Facades\Response;
@@ -13,7 +13,7 @@ class EloquentInsuranceTypeRepository extends AbstractRepository implements Insu
 {
     public function entity()
     {
-        return \App\Models\InsuranceType::class;
+        return \App\Model\InsuranceType::class;
     }
 
     public function all_insurance()
