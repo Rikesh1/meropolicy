@@ -191,6 +191,8 @@
 @endsection
 @push('extra_scripts')
     <script>
+        CKEDITOR.replace('type_description');
+
         $(document).ready(function () {
             $('#save').click(function (e) {
                 e.preventDefault();
@@ -211,6 +213,7 @@
                     data: formData,
                     success: function (response) {
                         console.log(response);
+                        
                     }
                 });
             });

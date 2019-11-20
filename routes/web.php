@@ -10,8 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Language Route
-Route::get('/lang/{lang}', ['Middleware' => 'LanguageSwitcher', 'uses' => 'LanguageController@change'])->name('langChange');
 
 Auth::routes();
 
@@ -57,3 +55,6 @@ Route::redirect('/agent', '/agent/dashboard');
 Route::group(['namespace' => 'Agent', 'prefix' => 'agent', 'as' => 'agent'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
+
+//Language Route
+Route::get('/lang/{lang}', ['Middleware' => 'LanguageSwitcher', 'uses' => 'LanguageController@change'])->name('langChange');

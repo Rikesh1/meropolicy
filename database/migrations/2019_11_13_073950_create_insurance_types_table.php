@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateInsuranceTypesTable extends Migration
@@ -26,6 +27,13 @@ class CreateInsuranceTypesTable extends Migration
             $table->timestamps();
             $table->string('page_title')->nullable();
         });
+
+        DB::table('insurance_types')->insert(
+            [
+                'slug' => 'life-insurance',
+                'insurance_type_name' => 'Life Insurance'
+            ]
+        );
     }
 
     /**
