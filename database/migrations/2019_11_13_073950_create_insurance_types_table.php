@@ -15,7 +15,7 @@ class CreateInsuranceTypesTable extends Migration
     {
         Schema::create('insurance_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('insurance_type_name');
             $table->boolean('status')->default(1);
             $table->string('icon')->nullable();

@@ -32,11 +32,27 @@
 <!-- ./wrapper -->
 
 <!-- AdminLTE App -->
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
-<script>
 
-    CKEDITOR.replace('type_description');
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>--}}
+
+<script>
+  @if(Session::has('success'))
+  toastr.success("{{Session::get('success')}}");
+  @endif
+  @if(Session::has('error'))
+  toastr.error("{{Session::get('error')}}");
+  @endif
+  @if(Session::has('info'))
+  toastr.info("{{Session::get('info')}}");
+  @endif
+  @if ($errors->any())
+  @foreach($errors->all() as $error)
+  toastr.warning("{{ $error }}");
+  @endforeach
+  @endif
 </script>
 @stack('extra_scripts')
 </body>

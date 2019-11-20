@@ -12,8 +12,8 @@ try {
 
     require('admin-lte/bower_components/bootstrap/dist/js/bootstrap');
     require('admin-lte');
+    window.toastr = require('toastr/build/toastr.min.js');
 
-    
 
 
 } catch (e) {

@@ -42,6 +42,7 @@ Route::redirect('/admin', '/admin/dashboard');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::any('/update-types', 'InsuranceTypeController@update_types')->name('insurance.update-types');
+    Route::get('/update-types-modal/{id?}', 'InsuranceTypeController@update_types_modal')->name('insurance.update-types-modal');
 });
 
 /** Merchant Routes */

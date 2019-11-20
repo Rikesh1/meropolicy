@@ -36,4 +36,10 @@ class InsuranceTypeController extends BackendController
         }
         return false;
     }
+
+    public function update_types_modal(Request $request)
+    {
+        $insurance = InsuranceType::where('id', $request->id)->first();
+        return view($this->adminPath . 'update_insurance_modal', compact('insurance'));
+    }
 }

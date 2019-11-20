@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class InsuranceType extends Model
 {
-    protected $fillable = ['slug', 'insurance_type_name', 'status', 'icon', 'insurance_type_image', 'meta_keywords', 'meta_description','page_title'];
+    protected $fillable = ['slug', 'insurance_type_name', 'insurance_description', 'status', 'icon', 'insurance_type_image', 'meta_keywords', 'meta_description', 'page_title'];
     use Sluggable;
 
     /**
